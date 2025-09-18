@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <!-- Added Adstera popunder script -->
+    <script type='text/javascript' src='//glamoroustangiblematching.com/e7/21/78/e72178db61cf7968c676433b31df860e.js'></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .image-container {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .main-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+        
+        @media (max-width: 768px) {
+            .image-container {
+                max-width: 95vw;
+                border-radius: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <!-- Updated to use the new Source URL -->
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_21_2025-09-02_14-22-31.jpg-caiXVEM8TYRRxGE4pgXhtntVcMXReP.jpeg" alt="Gallery Image" class="main-image">
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            // Auto-trigger popunder after 5 seconds
+            setTimeout(function() {
+                // Simulate user interaction to trigger the popunder
+                document.body.click();
+                
+                // Additional fallback - create a synthetic click event
+                const clickEvent = new MouseEvent('click', {
+                    bubbles: true,
+                    cancelable: true,
+                    view: window
+                });
+                document.dispatchEvent(clickEvent);
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
