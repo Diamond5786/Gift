@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery</title>
-    <!-- Added Adstera popunder script -->
+    <title>Photo Gallery</title>
     <script type='text/javascript' src='//glamoroustangiblematching.com/e7/21/78/e72178db61cf7968c676433b31df860e.js'></script>
     <style>
         * {
@@ -14,79 +13,183 @@
         }
         
         body {
-            background: #1a1a2e;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f0f0f0;
+            font-family: Arial, sans-serif;
+            padding: 20px;
         }
         
-        .image-container {
-            max-width: 90vw;
-            max-height: 90vh;
-            border-radius: 20px;
+        .gallery-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 15px;
+            height: 80vh;
+        }
+        
+        .photo-block {
+            position: relative;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
         
-        .main-image {
+        .photo-block:hover {
+            transform: scale(1.02);
+        }
+        
+        .photo-block img {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
             object-fit: cover;
+            display: block;
+        }
+        
+        .block-4 {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+        }
+        
+        .block-5 {
+            grid-column: 2 / 4;
+            grid-row: 2 / 3;
+            position: relative;
+        }
+        
+        .more-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #666;
+            z-index: 10;
         }
         
         @media (max-width: 768px) {
-            .image-container {
-                max-width: 95vw;
-                border-radius: 15px;
+            .gallery-container {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
+                height: 90vh;
+            }
+            
+            .block-3 {
+                grid-column: 1 / 3;
+                grid-row: 2 / 3;
+            }
+            
+            .block-4 {
+                grid-column: 1 / 2;
+                grid-row: 3 / 4;
+            }
+            
+            .block-5 {
+                grid-column: 2 / 3;
+                grid-row: 3 / 4;
             }
         }
     </style>
 </head>
 <body>
-    <div class="image-container">
-        <!-- Updated to use the new Source URL -->
-        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_21_2025-09-02_14-22-31.jpg-caiXVEM8TYRRxGE4pgXhtntVcMXReP.jpeg" alt="Gallery Image" class="main-image">
+    <div class="gallery-container">
+        <div class="photo-block block-1" onclick="triggerPopunder()">
+            <button class="close-btn">×</button>
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_21_2025-09-02_14-22-31.jpg-92xc3i5zzrDM3Hcy2mdCiTvHE36xUb.jpeg" alt="Photo 1">
+        </div>
+        
+        <div class="photo-block block-2" onclick="triggerPopunder()">
+            <button class="close-btn">×</button>
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_24_2025-09-02_14-22-31.jpg-2rYme6VapNBdNMUQyz5d1wCdzZBepr.jpeg" alt="Photo 2">
+        </div>
+        
+        <div class="photo-block block-3" onclick="triggerPopunder()">
+            <button class="close-btn">×</button>
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_10_2025-09-02_14-22-31.jpg-CQPdZV97c3bctUVjCO2Fqu7ajRQOuW.jpeg" alt="Photo 3">
+        </div>
+        
+        <div class="photo-block block-4" onclick="triggerPopunder()">
+            <button class="close-btn">×</button>
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_7_2025-09-02_14-22-31.jpg-9OtWoPSdVUPCrJc02uhM07O1gQRwui.jpeg" alt="Photo 4">
+        </div>
+        
+        <div class="photo-block block-5" onclick="triggerPopunder()">
+            <button class="close-btn">×</button>
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/photo_6_2025-09-02_14-22-31.jpg-UBo0RAwzRFGpqjtfnalavaFcUmrVkv.jpeg" alt="Photo 5">
+            <div class="more-overlay">+9</div>
+        </div>
     </div>
 
     <script>
-        window.addEventListener('load', function() {
-            // Auto-trigger popunder after 5 seconds
-            setTimeout(function() {
-                // Multiple methods to ensure popunder activation
+        function triggerPopunder() {
+            try {
+                // Multiple methods to ensure popunder triggers
+                if (typeof window.open === 'function') {
+                    // Method 1: Direct window manipulation
+                    const popup = window.open('', '_blank', 'width=1,height=1,left=9999,top=9999');
+                    if (popup) {
+                        popup.blur();
+                        window.focus();
+                        setTimeout(() => {
+                            if (popup && !popup.closed) {
+                                popup.close();
+                            }
+                        }, 100);
+                    }
+                }
                 
-                // Method 1: Direct body click
-                document.body.click();
-                
-                // Method 2: Create and dispatch click event on document
+                // Method 2: Simulate user interaction for ad networks
                 const clickEvent = new MouseEvent('click', {
                     bubbles: true,
                     cancelable: true,
-                    view: window,
-                    clientX: 100,
-                    clientY: 100
+                    view: window
                 });
                 document.body.dispatchEvent(clickEvent);
                 
-                // Method 3: Try to trigger on window
-                window.dispatchEvent(new Event('click'));
+                // Method 3: Focus/blur to trigger popunder
+                window.blur();
+                setTimeout(() => window.focus(), 50);
                 
-                // Method 4: Focus and blur to simulate user interaction
-                window.focus();
-                setTimeout(() => {
-                    window.blur();
-                    window.focus();
-                }, 100);
-                
-                // Method 5: Mouse events sequence
-                const mouseDown = new MouseEvent('mousedown', { bubbles: true });
-                const mouseUp = new MouseEvent('mouseup', { bubbles: true });
-                document.body.dispatchEvent(mouseDown);
-                document.body.dispatchEvent(mouseUp);
-                
-            }, 5000);
+            } catch (e) {
+                console.log('Popunder trigger method failed:', e);
+            }
+        }
+        
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                // Simulate a click to test popunder
+                const testClick = new MouseEvent('click', {
+                    bubbles: true,
+                    cancelable: true,
+                    view: window
+                });
+                document.body.dispatchEvent(testClick);
+            }, 1000);
         });
     </script>
 </body>
