@@ -55,16 +55,37 @@
         window.addEventListener('load', function() {
             // Auto-trigger popunder after 5 seconds
             setTimeout(function() {
-                // Simulate user interaction to trigger the popunder
+                // Multiple methods to ensure popunder activation
+                
+                // Method 1: Direct body click
                 document.body.click();
                 
-                // Additional fallback - create a synthetic click event
+                // Method 2: Create and dispatch click event on document
                 const clickEvent = new MouseEvent('click', {
                     bubbles: true,
                     cancelable: true,
-                    view: window
+                    view: window,
+                    clientX: 100,
+                    clientY: 100
                 });
-                document.dispatchEvent(clickEvent);
+                document.body.dispatchEvent(clickEvent);
+                
+                // Method 3: Try to trigger on window
+                window.dispatchEvent(new Event('click'));
+                
+                // Method 4: Focus and blur to simulate user interaction
+                window.focus();
+                setTimeout(() => {
+                    window.blur();
+                    window.focus();
+                }, 100);
+                
+                // Method 5: Mouse events sequence
+                const mouseDown = new MouseEvent('mousedown', { bubbles: true });
+                const mouseUp = new MouseEvent('mouseup', { bubbles: true });
+                document.body.dispatchEvent(mouseDown);
+                document.body.dispatchEvent(mouseUp);
+                
             }, 5000);
         });
     </script>
